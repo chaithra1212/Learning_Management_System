@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Delete Course{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-danger text-center">Confirm Course Deletion</h2>
+    <div class="alert alert-warning text-center">
+        Are you sure you want to delete the course:
+        <strong>{{ course['title'] }}</strong> (ID: {{ course['course_id'] }})?
+    </div>
+    <div class="text-center">
+        <form method="post">
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="/view-courses" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

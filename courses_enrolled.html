@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Courses Enrolled{% endblock %}
+
+{% block content %}
+<style>
+  .course-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .course-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .course-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  .progress {
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .progress-bar {
+    background-color: #0d6efd;
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .status {
+    font-weight: bold;
+    color: #ffc107;
+  }
+</style>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4 text-warning">My Enrolled Courses</h2>
+
+  <div class="col-md-6">
+    <h4 class="mb-3">Your Enrolled Courses</h4>
+    {% if enrolled_courses %}
+      <ul class="list-group">
+        {% for course in enrolled_courses %}
+        <li class="list-group-item">
+          {{ course['name'] }} - {{ course['instructor'] }}
+        </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>You are not enrolled in any courses.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

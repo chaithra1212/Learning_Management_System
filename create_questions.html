@@ -1,0 +1,29 @@
+<h3>Add Questions</h3>
+<form method="POST">
+  <label>Select Quiz:</label>
+  <select name="quiz_id">
+    {% for quiz in quizzes %}
+      <option value="{{ quiz.quiz_id }}">{{ quiz.title }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  <label>Question:</label>
+  <textarea name="question_text" required rows="3"></textarea><br>
+
+  <label>Option A:</label>
+  <input type="text" name="option_a" required><br>
+
+  <label>Option B:</label>
+  <input type="text" name="option_b" required><br>
+
+  <label>Option C:</label>
+  <input type="text" name="option_c" required><br>
+
+  <label>Option D:</label>
+  <input type="text" name="option_d" required><br>
+
+  <label>Correct Option (A/B/C/D):</label>
+  <input type="text" name="correct_option" required maxlength="1"><br><br>
+
+  <button type="submit">Add Question</button>
+</form>

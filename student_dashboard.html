@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Welcome, {{ session.student_name }}</h2>
+
+<div class="row">
+  <!-- All Available Courses -->
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-header bg-light">
+        <h4 class="mb-0">📚 All Available Courses</h4>
+      </div>
+      <div class="card-body">
+        {% if courses %}
+          <ul class="list-group">
+            {% for course in courses %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>{{ course['title'] }} – {{ course['instructor'] }}</span>
+                {% if course['course_id'] in enrolled_ids %}
+                  <a href="/drop-course/{{ course['course_id'] }}" class="btn btn-sm btn-outline-danger">Drop</a>
+                {% else %}
+                  <a href="/enroll-course/{{ course['course_id'] }}" class="btn btn-sm btn-outline-success">Enroll</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No courses available at the moment.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Available Quizzes -->
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-header bg-light">
+        <h4 class="mb-0">📝 Available Quizzes</h4>
+      </div>
+      <div class="card-body">
+        {% if quizzes %}
+          <ul class="list-group">
+            {% for quiz in quizzes %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ quiz['title'] }} (Course: {{ quiz['course_title'] }})
+                <a href="/start-quiz/{{ quiz['quiz_id'] }}" class="btn btn-sm btn-outline-primary">Start Quiz</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No quizzes available for your enrolled courses.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

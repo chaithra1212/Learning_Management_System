@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Welcome to the LMS Dashboard</h2>
+
+{% if session.user_id %}
+  <!-- Admin/Teacher view -->
+  <div class="text-center">
+    <p>You're logged in as <strong>{{ session.username }}</strong> (Admin)</p>
+    <a href="/view-students" class="btn btn-secondary me-2">View Students</a>
+    <a href="/view-courses" class="btn btn-info me-2">View Course</a>
+  </div>
+
+  {% if courses %}
+  <div class="mt-4">
+    <h4>Available Courses</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Course ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Instructor</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in courses %}
+        <tr>
+          <td>{{ course['course_id'] }}</td>
+          <td>{{ course['title'] }}</td>
+          <td>{{ course['description'] }}</td>
+          <td>{{ course['instructor'] }}</td>
+          <td>
+            <a href="/delete-course/{{ course['course_id'] }}" class="btn btn-danger btn-sm">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="mt-4"></p>
+  {% endif %}
+
+{% elif session.student_id %}
+  <!-- Student view -->
+  <div class="text-center">
+    <p>You're logged in as <strong>{{ session.student_name }}</strong> (Student)</p>
+    <a href="/student-dashboard" class="btn btn-success">Go to My Courses</a>
+  </div>
+
+{% else %}
+  <!-- Public view -->
+  <div class="text-center">
+    <p>Please log in to access dashboard features.</p>
+    <a href="/login" class="btn btn-primary me-2">Admin Login</a>
+    <a href="/student-login" class="btn btn-outline-primary">Student Login</a>
+  </div>
+{% endif %}
+{% endblock %}

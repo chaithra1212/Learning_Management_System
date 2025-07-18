@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Add Student{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="mb-4 text-center">Add New Student</h2>
+        <form method="POST" class="card p-4 shadow-sm">
+            <div class="mb-3">
+                <label for="student_id" class="form-label">Student ID</label>
+                <input type="number" class="form-control" name="student_id" required>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" name="dob" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Add Student</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

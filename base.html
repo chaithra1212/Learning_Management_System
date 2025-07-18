@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LMS - {% block title %}{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f9f9fc;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .navbar-custom {
+      background-color:darkseagreen;
+      box-shadow: 0 2px 6px rgba(181, 202, 26, 0.06);
+    }
+    .navbar-custom .nav-link,
+    .navbar-custom .navbar-brand {
+      color: #2c3e50;
+      font-weight: 500;
+    }
+    .navbar-custom .nav-link:hover {
+      color: #0066cc;
+    }
+    .btn-primary-custom {
+      background-color: #0066cc;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: 500;
+      border: none;
+      padding: 8px 16px;
+    }
+    .btn-primary-custom:hover {
+      background-color: #0052a3;
+    }
+    .btn-accent {
+      background-color: #e67e22;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: 500;
+      border: none;
+      padding: 8px 16px;
+    }
+    .btn-accent:hover {
+      background-color: #cf711f;
+    }
+    .alert-info {
+      background-color: #eef6ff;
+      border-color: #cce5ff;
+      color: #0052a3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">📘 LMS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          {% if session.user_id %}
+            <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="/view-students">View Students</a></li>
+            <li class="nav-item"><a class="nav-link" href="/add-course">Add Course</a></li>
+            <li class="nav-item"><a class="nav-link" href="/view-courses">View Courses</a></li>
+            <li class="nav-item"><a class="nav-link" href="/create-quiz">Create Quiz</a></li>
+            <li class="nav-item"><a class="nav-link" href="/create-questions">Add Questions</a></li>
+            <li class="nav-item"><a class="nav-link" href="/view-quizzes">Manage Quizzes</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout ({{ session.username }})</a></li>
+          {% elif session.student_id %}
+            <li class="nav-item"><a class="nav-link" href="/student-dashboard">My Courses</a></li>
+            <li class="nav-item"><a class="nav-link" href="/student-dashboard#quizzes">Quizzes</a></li>
+            <li class="nav-item"><a class="nav-link" href="/courses-enrolled">Courses Enrolled</a></li>
+            <li class="nav-item"><a class="nav-link" href="/student-profile">Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout ({{ session.student_name }})</a></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Flash Messages -->
+  <div class="container mt-3">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="alert alert-info">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- Page Content -->
+  <div class="container mt-4">
+    {% block content %}{% endblock %}
+  </div>
+
+</body>
+</html>

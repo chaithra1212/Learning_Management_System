@@ -1,0 +1,20 @@
+<h3>Create a Quiz</h3>
+<form method="POST">
+  <label>Quiz Title:</label>
+  <input type="text" name="title" required><br>
+
+  <label>Instructions:</label>
+  <textarea name="instructions" rows="4"></textarea><br>
+
+  <label>Time Limit (in minutes):</label>
+  <input type="number" name="time_limit"><br>
+
+  <label>Course:</label>
+  <select name="course_id">
+    {% for course in courses %}
+      <option value="{{ course.course_id }}">{{ course.title }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  <button type="submit">Create Quiz</button>
+</form>

@@ -1,0 +1,12 @@
+<h2>Quiz Completed!</h2>
+<p>Your Score: <strong>{{ score }}</strong> out of <strong>{{ total }}</strong></p>
+{% set percentage = (score / total) * 100 %}
+<p>Percentage: <strong>{{ percentage | round(2) }}%</strong></p>
+
+{% if percentage >= 80 %}
+  <p class="text-success">Excellent work! 🎉</p>
+{% elif percentage >= 50 %}
+  <p class="text-warning">Good effort. Keep practicing! 👏</p>
+{% else %}
+  <p class="text-danger">Don’t give up. Review the material and try again! 💪</p>
+{% endif %}

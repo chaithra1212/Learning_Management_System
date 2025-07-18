@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+  body {
+     background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3)),
+      url('https://img.freepik.com/free-photo/flat-lay-clipboards-with-copy-space_23-2148219259.jpg?semt=ais_hybrid&w=740') center/cover no-repeat;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #212529;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 120px 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  
+
+  /* Features Section */
+
+  #features h2 {
+    color: #212529;
+    margin-bottom: 40px;
+  }
+
+  #features .icon {
+    font-size: 40px;
+    color: #0d6efd;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #features .icon:hover {
+    transform: scale(1.2);
+  }
+
+  #features h5 {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  #features p {
+    color:white;
+  }
+
+  /* About Section */
+  #about {
+    padding: 80px 20px;
+  }
+
+  #about h2 {
+    color: #0d6efd;
+    margin-bottom: 30px;
+  }
+
+  #about p {
+    font-size: 1.1rem;
+    color:white;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Contact Section */
+  #contact {
+    border-top: 1px solid #dee2e6;
+    padding: 80px 20px;
+  }
+
+  #contact h2 {
+    color: #0d6efd;
+    margin-bottom: 20px;
+  }
+
+  #contact p.lead {
+    font-size: 1.1rem;
+    color:white;
+  }
+
+  #contact strong {
+    color: #212529;
+  }
+
+  /* Buttons */
+  .btn {
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 6px;
+  }
+
+  /* Typography */
+  h2, h5 {
+    font-weight: 600;
+  }
+
+  .lead {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 80px 20px;
+    }
+
+    
+  }
+</style>
+
+<!-- Hero Section -->
+ 
+<section class="hero">
+  <div class="hero-overlay">
+    <h1 class="display-5 fw-bold">Welcome to the Learning Management System</h1>
+    <p class="lead">Organize courses, manage students, and simplify learning.</p>
+    <div class="mt-4">
+      <a href="/login" class="btn btn-light me-2">Admin Login</a>
+      <a href="/student-login" class="btn btn-warning">Student Login</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="text-center">
+  <div class="container">
+    <h2>Why Choose Our LMS?</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="icon">📚</div>
+        <h5>Manage Courses</h5>
+        <p>Create and organize subjects, lessons, and instructors.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="icon">👩‍🎓</div>
+        <h5>Student Enrollments</h5>
+        <p>Enroll students, assign them to courses, and track activity.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="icon">📈</div>
+        <h5>Track Progress</h5>
+        <p>Monitor course completion, quiz scores, and engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="text-center">
+  <div class="container">
+    <h2>About LMS</h2>
+    <p class="lead">This platform is designed for schools and colleges to manage students and course delivery. It simplifies learning and teaching by providing centralized access to educational content, enrollment tools, and tracking systems.</p>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="text-center">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p class="lead">Have questions? Reach out anytime.</p>
+    <p>Email: <strong>chaithra22@gmail.com</strong></p>
+    <p>Phone: <strong>9966110842</strong></p>
+  </div>
+</section>
+
+{% endblock %}

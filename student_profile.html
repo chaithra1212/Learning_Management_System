@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ student['name'] }}</h2>
+<p>Email: {{ student['email'] }}</p>
+<p>Date of Birth: {{ student['date_of_birth'] }}</p>
+
+<hr>
+<h4>📊 Quiz Performance</h4>
+{% if quiz_scores %}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Quiz</th>
+        <th>Score</th>
+        <th>Total Questions</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result in quiz_scores %}
+        {% set percent = (result['score'] / result['total_questions']) * 100 %}
+        <tr>
+          <td>{{ result['quiz_title'] }}</td>
+          <td>{{ result['score'] }}</td>
+          <td>{{ result['total_questions'] }}</td>
+          <td>{{ percent | round(2) }}%</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No quiz attempts yet.</p>
+{% endif %}
+{% endblock %}
